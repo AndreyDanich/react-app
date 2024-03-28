@@ -1,5 +1,11 @@
+/* body {
+    background-color: rgb(23, 23, 23);
+} */
 .container {
     width: 100%;
     margin: 0 40px 0 40px;
     align-self: center;
+    display: flex;
+    align-items: center;
 }
+

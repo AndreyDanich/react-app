@@ -1,30 +1,268 @@
-import React from "react";
+import React from "react"
 import './header.css'
+import { Route, Routes, Link } from "react-router-dom"
+
+import logo from '../images/video-vertical.png'
+import moon from '../images/moon.svg'
+import history from '../images/book-white.svg'
+import search from '../images/search-normal-white.svg'
+import favorites from '../images/heart-white.svg'
 
 export default function Header() {
     return (
-        <header>
-            <nav className="container">
-                <div>
-                    <a href="#">
-                        <img className="logo-img" src="../images/video-square.svg"/>
-                    </a>
-                    <button>Тема</button>
-                </div>
+        <Routes>
+            <Route
+                path="/"
+                element={
+                    <header>
+                        <nav className="container">
+                            <div className="main-btns">
+                                <Link to='/' className="logo-img">
+                                    <img src={logo} />
+                                </Link>
+                                <Link className="change-theme">
+                                    <img src={moon} />
+                                </Link>
+                            </div>
 
-                <div className="navigation-menu">
-                    <div className="search">
-                        <button>История</button>
-                        <input/>
-                        <button>Поиск</button>
-                    </div>
-                    <button>Избранное</button>
-                    <div className="profile-menu">
-                        <button>Регистрация</button>
-                        <button>Вход</button>
-                    </div> 
-                </div>
-            </nav>
-        </header>
+                            <div className="navigation-menu">
+                                <div className="search">
+                                    <Link to='/history' className="history">
+                                        <img src={history} />
+                                    </Link>
+                                    <input type="search" placeholder="Поиск" />
+                                    <Link to='/search' className="search-btn">
+                                        <img src={search} />
+                                    </Link>
+                                </div>
+                                <Link to='/favorites' className="favorites">
+                                    <img src={favorites} />
+                                </Link>
+                                <div className="profile-menu">
+                                    <Link to='/signup' className="registration-btn">Регистрация</Link>
+                                    <Link to='/signin' className="registration-btn">Вход</Link>
+                                </div> 
+                            </div>
+                        </nav>
+                    </header>
+                }
+            />
+            <Route
+                path="/history"
+                element={
+                    <header>
+                        <nav className="container">
+                            <div className="main-btns">
+                                <Link to='/' className="logo-img">
+                                    <img src={logo} />
+                                </Link>
+                                <Link className="change-theme">
+                                    <img src={moon} />
+                                </Link>
+                            </div>
+
+                            <div className="navigation-menu">
+                                <div className="search">
+                                    <Link to='/history' className="history">
+                                        <img src={history} />
+                                    </Link>
+                                    <input type="search" placeholder="Поиск" />
+                                    <Link to='/search' className="search-btn">
+                                        <img src={search} />
+                                    </Link>
+                                </div>
+                                <Link to='/favorites' className="favorites">
+                                    <img src={favorites} />
+                                </Link>
+                                <div className="profile-menu">
+                                    <Link to='/signup' className="registration-btn">Регистрация</Link>
+                                    <Link to='/signin' className="registration-btn">Вход</Link>
+                                </div> 
+                            </div>
+                        </nav>
+                    </header>
+                }
+            />
+            <Route
+                path="/search"
+                element={
+                    <header>
+                        <nav className="container">
+                            <div className="main-btns">
+                                <Link to='/' className="logo-img">
+                                    <img src={logo} />
+                                </Link>
+                                <Link className="change-theme">
+                                    <img src={moon} />
+                                </Link>
+                            </div>
+
+                            <div className="navigation-menu">
+                                <div className="search">
+                                    <Link to='/history' className="history">
+                                        <img src={history} />
+                                    </Link>
+                                    <input type="search" placeholder="Поиск" />
+                                    <Link to='/search' className="search-btn">
+                                        <img src={search} />
+                                    </Link>
+                                </div>
+                                <Link to='/favorites' className="favorites">
+                                    <img src={favorites} />
+                                </Link>
+                                <div className="profile-menu">
+                                    <Link to='/signup' className="registration-btn">Регистрация</Link>
+                                    <Link to='/signin' className="registration-btn">Вход</Link>
+                                </div> 
+                            </div>
+                        </nav>
+                    </header>
+                }
+            />
+            <Route
+                path="/favorites"
+                element={
+                    <header>
+                        <nav className="container">
+                            <div className="main-btns">
+                                <Link to='/' className="logo-img">
+                                    <img src={logo} />
+                                </Link>
+                                <Link className="change-theme">
+                                    <img src={moon} />
+                                </Link>
+                            </div>
+
+                            <div className="navigation-menu">
+                                <div className="search">
+                                    <Link to='/history' className="history">
+                                        <img src={history} />
+                                    </Link>
+                                    <input type="search" placeholder="Поиск" />
+                                    <Link to='/search' className="search-btn">
+                                        <img src={search} />
+                                    </Link>
+                                </div>
+                                <Link to='/favorites' className="favorites">
+                                    <img src={favorites} />
+                                </Link>
+                                <div className="profile-menu">
+                                    <Link to='/signup' className="registration-btn">Регистрация</Link>
+                                    <Link to='/signin' className="registration-btn">Вход</Link>
+                                </div> 
+                            </div>
+                        </nav>
+                    </header>
+                }
+            />
+            <Route
+                path="/signup"
+                element={
+                    <header>
+                        <nav className="container">
+                            <div className="main-btns">
+                                <Link to='/' className="logo-img">
+                                    <img src={logo} />
+                                </Link>
+                                <Link className="change-theme">
+                                    <img src={moon} />
+                                </Link>
+                            </div>
+
+                            <div className="navigation-menu">
+                                <div className="search">
+                                    <Link to='/history' className="history">
+                                        <img src={history} />
+                                    </Link>
+                                    <input type="search" placeholder="Поиск" />
+                                    <Link to='/search' className="search-btn">
+                                        <img src={search} />
+                                    </Link>
+                                </div>
+                                <Link to='/favorites' className="favorites">
+                                    <img src={favorites} />
+                                </Link>
+                                <div className="profile-menu">
+                                    <Link to='/signup' className="registration-btn">Регистрация</Link>
+                                    <Link to='/signin' className="registration-btn">Вход</Link>
+                                </div>  
+                            </div>
+                        </nav>
+                    </header>
+                }
+            />
+            <Route
+                path="/signin"
+                element={
+                    <header>
+                        <nav className="container">
+                            <div className="main-btns">
+                                <Link to='/' className="logo-img">
+                                    <img src={logo} />
+                                </Link>
+                                <Link className="change-theme">
+                                    <img src={moon} />
+                                </Link>
+                            </div>
+
+                            <div className="navigation-menu">
+                                <div className="search">
+                                    <Link to='/history' className="history">
+                                        <img src={history} />
+                                    </Link>
+                                    <input type="search" placeholder="Поиск" />
+                                    <Link to='/search' className="search-btn">
+                                        <img src={search} />
+                                    </Link>
+                                </div>
+                                <Link to='/favorites' className="favorites">
+                                    <img src={favorites} />
+                                </Link>
+                                <div className="profile-menu">
+                                    <Link to='/signup' className="registration-btn">Регистрация</Link>
+                                    <Link to='/signin' className="registration-btn">Вход</Link>
+                                </div> 
+                            </div>
+                        </nav>
+                    </header>
+                }
+            />
+            <Route
+                path="/about_movie"
+                element={
+                    <header>
+                        <nav className="container">
+                            <div className="main-btns">
+                                <Link to='/' className="logo-img">
+                                    <img src={logo} />
+                                </Link>
+                                <Link className="change-theme">
+                                    <img src={moon} />
+                                </Link>
+                            </div>
+
+                            <div className="navigation-menu">
+                                <div className="search">
+                                    <Link to='/history' className="history">
+                                        <img src={history} />
+                                    </Link>
+                                    <input type="search" placeholder="Поиск" />
+                                    <Link to='/search' className="search-btn">
+                                        <img src={search} />
+                                    </Link>
+                                </div>
+                                <Link to='/favorites' className="favorites">
+                                    <img src={favorites} />
+                                </Link>
+                                <div className="profile-menu">
+                                    <Link to='/signup' className="registration-btn">Регистрация</Link>
+                                    <Link to='/signin' className="registration-btn">Вход</Link>
+                                </div> 
+                            </div>
+                        </nav>
+                    </header>
+                }
+            />
+        </Routes>
     )
 }
