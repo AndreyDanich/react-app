@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import './header.css'
 import { Route, Routes, Link } from "react-router-dom"
 
@@ -7,8 +7,13 @@ import moon from '../images/moon.svg'
 import history from '../images/book-white.svg'
 import search from '../images/search-normal-white.svg'
 import favorites from '../images/heart-white.svg'
+import { ThemeContext } from "../Providers/ThemeProvider"
 
 export default function Header() {
+    const [theme, setTheme] = useContext(ThemeContext)
+    const changeTheme = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light')
+    }
     return (
         <Routes>
             <Route
@@ -20,7 +25,7 @@ export default function Header() {
                                 <Link to='/' className="logo-img">
                                     <img src={logo} />
                                 </Link>
-                                <Link className="change-theme">
+                                <Link onClick={changeTheme} className="change-theme">
                                     <img src={moon} />
                                 </Link>
                             </div>
@@ -56,7 +61,7 @@ export default function Header() {
                                 <Link to='/' className="logo-img">
                                     <img src={logo} />
                                 </Link>
-                                <Link className="change-theme">
+                                <Link onClick={changeTheme}  className="change-theme">
                                     <img src={moon} />
                                 </Link>
                             </div>
@@ -92,7 +97,7 @@ export default function Header() {
                                 <Link to='/' className="logo-img">
                                     <img src={logo} />
                                 </Link>
-                                <Link className="change-theme">
+                                <Link onClick={changeTheme}  className="change-theme">
                                     <img src={moon} />
                                 </Link>
                             </div>
@@ -128,7 +133,7 @@ export default function Header() {
                                 <Link to='/' className="logo-img">
                                     <img src={logo} />
                                 </Link>
-                                <Link className="change-theme">
+                                <Link onClick={changeTheme} className="change-theme">
                                     <img src={moon} />
                                 </Link>
                             </div>
@@ -164,7 +169,7 @@ export default function Header() {
                                 <Link to='/' className="logo-img">
                                     <img src={logo} />
                                 </Link>
-                                <Link className="change-theme">
+                                <Link onClick={changeTheme}  className="change-theme">
                                     <img src={moon} />
                                 </Link>
                             </div>
@@ -200,7 +205,7 @@ export default function Header() {
                                 <Link to='/' className="logo-img">
                                     <img src={logo} />
                                 </Link>
-                                <Link className="change-theme">
+                                <Link onClick={changeTheme} className="change-theme">
                                     <img src={moon} />
                                 </Link>
                             </div>
@@ -228,7 +233,7 @@ export default function Header() {
                 }
             />
             <Route
-                path="/about_movie"
+                path="/about_movie/:movieId"
                 element={
                     <header>
                         <nav className="container">
@@ -236,7 +241,7 @@ export default function Header() {
                                 <Link to='/' className="logo-img">
                                     <img src={logo} />
                                 </Link>
-                                <Link className="change-theme">
+                                <Link onClick={changeTheme}  className="change-theme">
                                     <img src={moon} />
                                 </Link>
                             </div>

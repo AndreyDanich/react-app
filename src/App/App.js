@@ -3,18 +3,19 @@ import { Route, Routes } from "react-router-dom"
 import './App.css'
 
 import Header from "../Header/Header"
-import Main from "../Main/Main"
 import History from "../History/History"
 import Search from "../Search/Search"
 import Registration from "../Registration/Registration"
 import Login from "../Login/Login"
 import Favorites from "../Favorites/Favorites"
-import FilmInformation from "../FilmInformation/FilmInformation"
-
+import AboutMovie from "../AboutMovie/AboutMovie"
+import FilmCard from "../FilmCard/FilmCard"
+import { ThemeProvider } from "../Providers/ThemeProvider"
 
 export default function App() {
     return (
         <>
+            <ThemeProvider>
             <Header />
             <main>
                 <div className='main container'>
@@ -22,8 +23,8 @@ export default function App() {
                     <div className='content'>
                         <Routes>
                             <Route
-                                path="/"
-                                element = {<Main />}    
+                                path="*"
+                                element = {<FilmCard />}    
                             /> 
                             <Route
                                 path="/history"
@@ -46,13 +47,14 @@ export default function App() {
                                 element = {<Login />}    
                             />
                             <Route
-                                path="/about_movie"
-                                element = {<FilmInformation />}    
-                                        />
+                                path="/about_movie/:movieId"
+                                element = {<AboutMovie />}    
+                            />
                         </Routes>
                     </div>  
                 </div>
-            </main>
+                </main>
+            </ThemeProvider>
         </>
     )
 }

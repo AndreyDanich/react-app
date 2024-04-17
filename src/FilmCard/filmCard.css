@@ -1,13 +1,39 @@
 .film-card {
+    position: relative;
     height: 330px;
     width: 220px;
     margin-bottom: 20px;
     cursor:pointer;
-    background-color: #e9e9e9;
     border-radius: 15px;
+    border: none;
     overflow: hidden;
 }
 
 .film-card img {
+    height: 100%;
+    border-radius: 15px;
+}
+
+.card-favorite {
+    display: none;
+    position: absolute;
+    z-index: 1;
     width: 100%;
+    cursor: default;
+    background: rgb(202,202,202);
+    background: linear-gradient(0deg, rgba(202,202,202,0.5019257703081232) 0%, rgba(134,133,133,0.6671918767507004) 6%, rgba(95,94,94,0.7456232492997199) 18%, rgba(59,58,58,0.8016456582633054) 32%, rgba(27,26,25,0.8772759103641457) 51%);                                                                                
+    /* background: rgb(21,22,22);
+    background: radial-gradient(circle, rgba(21,22,22,0.9501050420168067) 0%, rgba(107,106,106,0.26102941176470584) 100%); */
+}
+
+.card-favorite button {
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+.film-card:hover .card-favorite {
+    display: flex;
+    justify-content: center;
 }

@@ -3,32 +3,34 @@ import './filmCard.css'
 import { useEffect } from "react";
 import { useState } from "react";
 import { Route, Link, Routes } from "react-router-dom";
-// import { Route, Routes } from "react-router-dom"
-// import { FilmInformation } from "../FilmInformation/FilmInformation";
+import { useDispatch } from "react-redux";
+import { actions } from "../store/slices/cardSlice";
+import favorites from '../images/heart-white.svg'
+// import NonFavorites from '../images/heart-slash-white.svg'
 
 export default function FilmCard() {
-    const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const dispatch = useDispatch()
     
-    useEffect(() => {
-        const options = {
-            method: 'GET',
-            headers: {accept: 'application/json', 'X-API-KEY': 'N7FBPDG-8XG4TRX-JVCVPP5-HZ87GDW'}
-        };
-        fetch('https://api.kinopoisk.dev/v1.4/movie?page=1&limit=250&selectFields=name&selectFields=id&selectFields=description&selectFields=releaseYears&selectFields=rating&selectFields=poster&selectFields=logo', options)
-        .then(response => response.json())
-        .then(data => {
-            let result = data.docs
-            console.log(result) 
-            return result
-        })
-        .then((data) => {
-                setIsLoaded(true);
-                setItems(data);
-        })
-        .catch(err => console.error(err))
-    }, [])    
-    
+        useEffect(() => {
+            const options = {
+                method: 'GET',
+                headers: { accept: 'application/json', 'X-API-KEY': 'N7FBPDG-8XG4TRX-JVCVPP5-HZ87GDW' }
+            };
+            fetch('https://api.kinopoisk.dev/v1.4/movie?page=1&limit=250&selectFields=name&selectFields=id&selectFields=description&selectFields=releaseYears&selectFields=rating&selectFields=poster&selectFields=logo', options)
+                .then(response => response.json())
+                .then(data => {
+                    let result = data.docs
+                    console.log(result)
+                    return result
+                })
+                .then((data) => {
+                    setIsLoaded(true);
+                    setItems(data);
+                })
+                .catch(err => console.error(err))
+        }, [])
     
     if (!isLoaded) {
         return <div>Загрузка...</div>
@@ -41,20 +43,21 @@ export default function FilmCard() {
                             <Routes>
                                 <Route path="/"
                                     element={
-                                        <Link to={{
+                                        <div className="film-card" key={item.id}>
+                                            <div className="card-favorite">
+                                            <button onClick={handleClick} >
+                                                <img src={favorites} />
+                                            </button>
+                                            </div>
+                                            
+                                            <Link to={`/about_movie/${item.id}`}
+                                                onClick={() => dispatch(actions.getIdMovie(item))}
+                                                 key={item.id}>
+                                                <img src={item.poster.previewUrl} />
+                                            </Link>
+                                        </div>
                                         
-                                            pathname: '/about_movie',
-                                            state: {
-                                                id: item.id,
-                                                name: item.name,
-                                                description: item.description,
-                                                poster: item.poster.previewUrl,
-                                                rating: item.rating.kp
-                                            }
-                                        }} className="film-card" key={item.id}>
-                                            <img src={item.poster.previewUrl} />
-                                        </Link>
-                                    } 
+                                    }
                                 />
                             </Routes>
                         </>
@@ -65,11 +68,7 @@ export default function FilmCard() {
     }
 }
 
-// function handleClick() {
-//     return (
-//         <Routes>
-//             <Route path="/about"
-//                 Component={ <FilmInformation/>} />
-//         </Routes>
-//     )
-// }
+
+function handleClick() {
+    console.log('favorite')
+}
